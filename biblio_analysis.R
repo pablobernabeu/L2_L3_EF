@@ -1,5 +1,5 @@
 
-# A bibliometric analysis of the prevalence of three executive functions 
+# Bibliometric analysis of the prevalence of three executive functions 
 # in the literatures on second and third language learning.
 
 
@@ -26,7 +26,7 @@ quota = 20
 # "learning" and "cognition" to make the scope of the search more relevant to 
 # the topic of interest. 
 
-reference_query = '"second language" learning cognition'
+reference_query = '"second language"'
 
 comparison_terms = c( '"working memory"', 'inhibition', '"implicit learning"' )
 
@@ -37,7 +37,9 @@ L2_EF =
                     search_period, quota, verbose = TRUE, 
                     reference_query_field_tag = 'TITLE-ABS-KEY')
 
-saveRDS(L2_EF, paste0('L2_EF', '_', Sys.Date(), '.rds'))
+saveRDS(L2_EF, 'L2_EF.rds')
+
+L2_EF = readRDS('L2_EF.rds')
 
 plot_L2_EF = 
   plot_scopus_comparison(L2_EF, 
@@ -59,18 +61,16 @@ plot_L2_EF =
 # and "cognition" to make the scope of the search more relevant to the topic of 
 # interest. 
 
-reference_query = '"third language" learning cognition'
-
-comparison_terms = c( '"working memory"', 'inhibition', '"implicit learning"' )
-
-N_comparison_terms = length(comparison_terms)
+reference_query = '"third language"'
 
 L3_EF = 
   scopus_comparison(reference_query, comparison_terms, 
                     search_period, quota, verbose = TRUE, 
                     reference_query_field_tag = 'TITLE-ABS-KEY')
 
-saveRDS(L3_EF, paste0('L3_EF', '_', Sys.Date(), '.rds'))
+saveRDS(L3_EF, 'L3_EF.rds')
+
+L3_EF = readRDS('L3_EF.rds')
 
 plot_L3_EF = 
   plot_scopus_comparison(L3_EF, 
@@ -84,7 +84,7 @@ plot_L3_EF =
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
   # Prepare layout for the multi-plot combination
   theme(axis.text.x = element_text(margin = margin(7, 0, 0, 0, 'pt')),
-        legend.position = c(.87, .8))
+        legend.position = c(.83, .8))
 
 
 # Combine plots
@@ -95,5 +95,8 @@ plot_L2_EF + plot_L3_EF +
         axis.title = element_text(vjust = 0.5, size = 12), 
         plot.title = element_markdown(hjust = 0.5, size = 12),
         legend.text = element_text(size = 11),
-        legend.background = element_rect(color = 'grey30', fill = 'grey98'), 
-        legend.margin = margin(0, 8, 6, 6))
+        legend.background = element_rect(color = 'grey80', fill = 'grey99'), 
+        legend.margin = margin(-5, 5, 2, 0)) 
+
+ggsave('plot_L2_L3_EF.svg', width = 10, 
+       height = 6, units = 'in', dpi = 320)
