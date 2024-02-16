@@ -10,7 +10,7 @@ library(dplyr)
 library(patchwork)
 
 
-# Load in Scopus search functions
+# Load in Scopus search functions from https://github.com/pablobernabeu/rscopus_plus
 source('https://raw.githubusercontent.com/pablobernabeu/rscopus_plus/main/scopus_comparison.R')
 source('https://raw.githubusercontent.com/pablobernabeu/rscopus_plus/main/plot_scopus_comparison.R')
 
