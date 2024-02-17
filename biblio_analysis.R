@@ -52,7 +52,8 @@ plot_L2_EF =
   ) + 
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
   # Prepare layout for the multi-plot combination
-  theme(axis.text.x = element_blank(), legend.position = 'none')
+  theme(axis.text.x = element_blank(), axis.title.x = element_blank(), 
+        legend.position = 'none')
 
 
 # Prevalence of three executive functions in third language studies from 2000 to 2023. 
@@ -84,6 +85,7 @@ plot_L3_EF =
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
   # Prepare layout for the multi-plot combination
   theme(axis.text.x = element_text(margin = margin(7, 0, 0, 0, 'pt')),
+        axis.title.x = element_text(margin = margin(8, 0, 0, 0, 'pt')),
         legend.position = c(.83, .8))
 
 
@@ -92,11 +94,11 @@ plot_L3_EF =
 plot_L2_EF + plot_L3_EF + 
   plot_layout(ncol = 1, axes = 'collect') &
   theme(axis.text = element_text(size = 10),
-        axis.title = element_text(vjust = 0.5, size = 12), 
+        axis.title = element_text(vjust = 0.5, size = 13), 
         plot.title = element_markdown(hjust = 0.5, size = 12),
         legend.text = element_text(size = 11),
         legend.background = element_rect(color = 'grey80', fill = 'grey99'), 
-        legend.margin = margin(-5, 5, 2, 0)) 
+        legend.margin = margin(-5, 10, 2, 0)) 
 
 ggsave('plot_L2_L3_EF.svg', width = 10, 
        height = 6, units = 'in', dpi = 320)
