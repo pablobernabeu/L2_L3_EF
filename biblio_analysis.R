@@ -39,7 +39,7 @@ L2_EF =
 
 saveRDS(L2_EF, 'L2_EF.rds')
 
-L2_EF = readRDS('L2_EF.rds')
+L2_EF = readRDS('L2_EF.rds')  # it's possible to load results directly
 
 plot_L2_EF = 
   plot_scopus_comparison(L2_EF, 
@@ -71,7 +71,7 @@ L3_EF =
 
 saveRDS(L3_EF, 'L3_EF.rds')
 
-L3_EF = readRDS('L3_EF.rds')
+L3_EF = readRDS('L3_EF.rds')  # it's possible to load results directly
 
 plot_L3_EF = 
   plot_scopus_comparison(L3_EF, 
