@@ -8,6 +8,6 @@ The analysis and the plot were created in R using the [`rscopus_plus` functions]
 
 ![plot_L2_L3_EF](https://raw.githubusercontent.com/pablobernabeu/L2_L3_EF/main/plot_L2_L3_EF.svg)
 
-## Reference
+### Reference
 
 Bernabeu, P. (2024). *rscopus_plus (v1.1.5)*. Zenodo. https://doi.org/10.5281/zenodo.10689747
