@@ -10,4 +10,4 @@ The analysis and the plot were created in R using the [`rscopus_plus` functions]
 
 ### Reference
 
-Bernabeu, P. (2024). *rscopus_plus (v1.1.5)*. Zenodo. https://doi.org/10.5281/zenodo.10689747
+Bernabeu, P. (2024). *rscopus_plus*. OSF. https://doi.org/10.17605/OSF.IO/BUZQ6
