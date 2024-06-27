@@ -16,7 +16,7 @@ source('https://raw.githubusercontent.com/pablobernabeu/rscopus_plus/main/plot_s
 
 
 # General parameters
-search_period = 2000:2023
+search_period = 1990:2023
 quota = 20
 
 
@@ -28,7 +28,7 @@ quota = 20
 
 reference_query = '"second language"'
 
-comparison_terms = c( '"working memory"', 'inhibition', '"implicit learning"' )
+comparison_terms = c( '"working memory"', 'inhibit*', '"implicit learning"' )
 
 N_comparison_terms = length(comparison_terms)
 
@@ -39,7 +39,7 @@ L2_EF =
 
 saveRDS(L2_EF, 'L2_EF.rds')
 
-L2_EF = readRDS('L2_EF.rds')  # it's possible to load results directly
+L2_EF = readRDS('L2_EF.rds')
 
 plot_L2_EF = 
   plot_scopus_comparison(L2_EF, 
@@ -47,7 +47,7 @@ plot_L2_EF =
                          pub_count_in_lines = TRUE) +
   scale_color_manual(
     values = c( "[ref.] + '\"working memory\"'" = scales::hue_pal()(N_comparison_terms)[1],
-                "[ref.] + 'inhibition'" = scales::hue_pal()(N_comparison_terms)[2], 
+                "[ref.] + 'inhibit*'" = scales::hue_pal()(N_comparison_terms)[2], 
                 "[ref.] + '\"implicit learning\"'" = scales::hue_pal()(N_comparison_terms)[3] )
   ) + 
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
@@ -64,6 +64,8 @@ plot_L2_EF =
 
 reference_query = '"third language"'
 
+# Other parameters identical to those used in the query above.
+
 L3_EF = 
   scopus_comparison(reference_query, comparison_terms, 
                     search_period, quota, verbose = TRUE, 
@@ -71,7 +73,7 @@ L3_EF =
 
 saveRDS(L3_EF, 'L3_EF.rds')
 
-L3_EF = readRDS('L3_EF.rds')  # it's possible to load results directly
+L3_EF = readRDS('L3_EF.rds')
 
 plot_L3_EF = 
   plot_scopus_comparison(L3_EF, 
@@ -79,14 +81,14 @@ plot_L3_EF =
                          pub_count_in_lines = TRUE) +
   scale_color_manual(
     values = c( "[ref.] + '\"working memory\"'" = scales::hue_pal()(N_comparison_terms)[1],
-                "[ref.] + 'inhibition'" = scales::hue_pal()(N_comparison_terms)[2], 
+                "[ref.] + 'inhibit*'" = scales::hue_pal()(N_comparison_terms)[2], 
                 "[ref.] + '\"implicit learning\"'" = scales::hue_pal()(N_comparison_terms)[3] )
   ) + 
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
   # Prepare layout for the multi-plot combination
   theme(axis.text.x = element_text(margin = margin(7, 0, 0, 0, 'pt')),
         axis.title.x = element_text(margin = margin(8, 0, 0, 0, 'pt')),
-        legend.position = c(.83, .8))
+        legend.position = 'inside', legend.position.inside = c(.85, .8))
 
 
 # Combine plots
@@ -96,9 +98,13 @@ plot_L2_EF + plot_L3_EF +
   theme(axis.text = element_text(size = 10),
         axis.title = element_text(vjust = 0.5, size = 13), 
         plot.title = element_markdown(hjust = 0.5, size = 12),
-        legend.text = element_text(size = 11),
+        legend.text = element_text(size = 11,),
         legend.background = element_rect(color = 'grey80', fill = 'grey99'), 
-        legend.margin = margin(-5, 10, 2, 0)) 
+        legend.margin = margin(0, 5, 2, 0)) 
 
 ggsave('plot_L2_L3_EF.svg', width = 10, 
        height = 6, units = 'in', dpi = 320)
+
+ggsave('plot_L2_L3_EF.pdf', width = 10, 
+       height = 6, units = 'in', dpi = 320)
+
