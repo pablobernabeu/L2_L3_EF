@@ -1,4 +1,5 @@
 
+
 # Bibliometric analysis of the prevalence of three executive functions 
 # in the literatures on second and third language.
 
@@ -106,5 +107,8 @@ ggsave('plot_L2_L3_EF.svg', width = 10,
        height = 6, units = 'in', dpi = 320)
 
 ggsave('plot_L2_L3_EF.pdf', width = 10, 
+       height = 6, units = 'in', dpi = 320)
+
+ggsave('plot_L2_L3_EF.png', width = 10, 
        height = 6, units = 'in', dpi = 320)
 
